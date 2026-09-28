@@ -1,0 +1,12 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend / entorno
+backend/config/credenciales.local.php
+*.log
+
+# Sistema operativo / editores
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,288 @@
+/* ============================================================
+   Sistema de diseño propio del proyecto.
+   No se reemplaza Bootstrap (sigue resolviendo el grid y el
+   responsive); se lo redecora con una paleta y tipografía
+   propias para que no se vea como un Bootstrap sin tocar.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --color-fondo: #f4f5f9;
+  --color-superficie: #ffffff;
+  --color-borde: #e2e5ec;
+  --color-texto: #1c2130;
+  --color-texto-tenue: #666f85;
+
+  --color-primario: #3446a8;
+  --color-primario-oscuro: #262f78;
+  --color-acento: #1f8a6f;
+
+  --radio-base: 10px;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--color-texto);
+  letter-spacing: -0.01em;
+}
+
+/* --- Barra de navegación --- */
+.navbar.bg-dark {
+  background-color: var(--color-primario-oscuro) !important;
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-size: 1.05rem;
+}
+
+.navbar-dark .nav-link {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.navbar-dark .nav-link.active,
+.navbar-dark .nav-link:hover {
+  color: #ffffff;
+}
+
+/* --- Botones --- */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  padding-inline: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primario);
+  border-color: var(--color-primario);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-primario-oscuro);
+  border-color: var(--color-primario-oscuro);
+}
+
+.btn-outline-primary {
+  color: var(--color-primario);
+  border-color: var(--color-primario);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-primario);
+  border-color: var(--color-primario);
+}
+
+.btn-outline-light.disabled {
+  opacity: 1;
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Tarjetas --- */
+.card {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-base);
+  box-shadow: none;
+  background-color: var(--color-superficie);
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--color-primario);
+}
+
+.card-title {
+  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-size: 1.05rem;
+}
+
+/* --- Formularios --- */
+.form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-texto);
+}
+
+.form-control {
+  border-radius: 8px;
+  border-color: var(--color-borde);
+  padding: 0.55rem 0.75rem;
+}
+
+.form-control:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(52, 70, 168, 0.15);
+}
+
+.form-text {
+  color: var(--color-texto-tenue);
+  font-size: 0.8rem;
+}
+
+/* --- Alertas --- */
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+/* --- Selector de sistema (pantalla inicial) --- */
+.selector-sistemas {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(52, 70, 168, 0.08), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(31, 138, 111, 0.08), transparent 45%);
+}
+
+.selector-sistemas p {
+  color: var(--color-texto-tenue);
+  max-width: 32rem;
+}
+
+/* --- Botón de cambio de sistema, dentro de cada navbar --- */
+.boton-cambiar-sistema {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  background: transparent;
+}
+
+.boton-cambiar-sistema:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* --- Estado vacío --- */
+.text-center.text-secondary.py-5.border.rounded.bg-light {
+  border-radius: var(--radio-base) !important;
+  border-color: var(--color-borde) !important;
+}
+
+
+/* --- Diálogo de confirmación propio (reemplaza al confirm() del navegador) --- */
+.dialogo-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgba(28, 33, 48, 0.55);
+  animation: dialogo-fondo-entrada 0.15s ease-out;
+}
+
+.dialogo-caja {
+  width: 100%;
+  max-width: 24rem;
+  padding: 1.75rem 1.5rem 1.5rem;
+  text-align: center;
+  background-color: var(--color-superficie);
+  border-radius: 14px;
+  box-shadow: 0 20px 45px rgba(28, 33, 48, 0.25);
+  animation: dialogo-caja-entrada 0.18s ease-out;
+}
+
+.dialogo-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  color: var(--color-primario);
+  background-color: rgba(52, 70, 168, 0.12);
+}
+
+.dialogo-icono-peligro {
+  color: #c0392b;
+  background-color: rgba(192, 57, 43, 0.12);
+}
+
+.dialogo-titulo {
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+}
+
+.dialogo-mensaje {
+  margin-bottom: 1.5rem;
+  color: var(--color-texto-tenue);
+  font-size: 0.95rem;
+}
+
+.dialogo-acciones {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.dialogo-acciones .btn {
+  flex: 1;
+}
+
+@keyframes dialogo-fondo-entrada {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dialogo-caja-entrada {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialogo-fondo,
+  .dialogo-caja {
+    animation: none;
+  }
+}
+
+/* --- Inicio de sesión con proveedores externos --- */
+.separador-o {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--color-texto-tenue);
+  font-size: 0.85rem;
+}
+
+.separador-o::before,
+.separador-o::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-borde);
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  font-weight: 500;
+}
+
+.btn-social:hover {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+.btn-social-google .bi { color: #db4437; }
+.btn-social-github .bi { color: #24292f; }
+.btn-social-discord .bi { color: #5865f2; }
